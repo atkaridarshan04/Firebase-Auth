@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { app } from "../firebaseConfig"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
-export default function Signup() {
+export default function Signin() {
 
     const auth = getAuth();
 
@@ -21,14 +21,14 @@ export default function Signup() {
         e.preventDefault();
         setLoading(true)
 
-        createUserWithEmailAndPassword(auth, data.email, data.password)
+        signInWithEmailAndPassword(auth, data.email, data.password)
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
                 console.log(user)
                 setLoading(false)
 
-                navigate('/sign-in');
+                navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -61,12 +61,12 @@ export default function Signup() {
                     </div>}
 
                     <button disabled={loading} className="btn btn-wide mx-auto">
-                        {loading ? "Loading..." : "Sign Up"}
+                        {loading ? "Loading..." : "Sign In"}
                     </button>
 
                 </form>
 
-                <p className="py-6">Already have an account? <a href="/sign-in" className="link link-primary">Sign in</a></p>
+                <p className="py-6">Dont have an account? <a href="/sign-up" className="link link-primary">Sign up</a></p>
 
             </div>
         </div>
