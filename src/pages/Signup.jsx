@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"
 import { app } from "../firebaseConfig"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import GoogleOAuth from "../components/GoogleOAuth";
+import GitHubOAuth from "../components/GitHubOAuth";
 
 
 export default function Signup() {
@@ -68,6 +69,7 @@ export default function Signup() {
                     </button>
 
                     <GoogleOAuth />
+                    <GitHubOAuth />
 
                 </form>
 
