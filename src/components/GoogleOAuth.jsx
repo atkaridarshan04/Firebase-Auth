@@ -23,7 +23,7 @@ export default function GoogleOAuth() {
                 console.log(user)
                 setLoading(false)
 
-                navigate('/sign-in');
+                navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;
