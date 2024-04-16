@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { app } from "../firebaseConfig"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import GoogleOAuth from "../components/GoogleOAuth";
 
 
 export default function Signin() {
@@ -63,6 +64,8 @@ export default function Signin() {
                     <button disabled={loading} className="btn btn-wide mx-auto">
                         {loading ? "Loading..." : "Sign In"}
                     </button>
+
+                    <GoogleOAuth />
 
                 </form>
 

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { app } from "../firebaseConfig"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import GoogleOAuth from "../components/GoogleOAuth";
 
 
 export default function Signup() {
@@ -28,7 +29,7 @@ export default function Signup() {
                 console.log(user)
                 setLoading(false)
 
-                navigate('/sign-in');
+                navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -63,6 +64,8 @@ export default function Signup() {
                     <button disabled={loading} className="btn btn-wide mx-auto">
                         {loading ? "Loading..." : "Sign Up"}
                     </button>
+
+                    <GoogleOAuth/>
 
                 </form>
 
