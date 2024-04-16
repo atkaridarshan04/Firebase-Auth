@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate , Link} from "react-router-dom"
 import { app } from "../firebaseConfig"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import GoogleOAuth from "../components/GoogleOAuth";
@@ -44,6 +44,8 @@ export default function Signin() {
         <div className="min-h-[60vh] pt-10 max-w-[50vw] mx-auto flex flex-col">
             <div className="flex flex-col ">
 
+                <h1 className="text-5xl font-bold mb-7 mx-auto">Sign In</h1>
+
                 <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
                     <label className="input input-bordered flex items-center gap-2">
@@ -69,7 +71,7 @@ export default function Signin() {
 
                 </form>
 
-                <p className="py-6">Dont have an account? <a href="/sign-up" className="link link-primary">Sign up</a></p>
+                <p className="py-6">Dont have an account? <Link to="/sign-up" className="link link-primary">Sign up</Link></p>
 
             </div>
         </div>
