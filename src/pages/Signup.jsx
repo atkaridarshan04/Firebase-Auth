@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
-import { app } from "../firebaseConfig"
+import { app, database } from "../firebaseConfig"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import GoogleOAuth from "../components/GoogleOAuth";
 import GitHubOAuth from "../components/GitHubOAuth";
-
+import { collection, addDoc } from "firebase/firestore";
+import bcryptjs from 'bcryptjs'
 
 export default function Signup() {
 
@@ -14,6 +15,8 @@ export default function Signup() {
     const [data, setData] = useState({})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+
+    const collectionRef = collection(database, 'users')
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.id]: e.target.value })
@@ -30,9 +33,20 @@ export default function Signup() {
                 console.log(user)
                 setLoading(false)
 
-                navigate('/');
-            })
-            .catch((error) => {
+                const hashedPassword = bcryptjs.hashSync(data.password, 10)
+
+                try {
+                    addDoc(collectionRef, {
+                        email: data.email,
+                        password: hashedPassword
+                    })
+                } catch (error) {
+                    console.log(error)
+                    setError(error.message)
+                }
+
+                navigate('/sign-in');
+            }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
