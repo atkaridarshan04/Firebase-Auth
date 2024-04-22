@@ -56,7 +56,7 @@ export default function Signup() {
     }
 
     return (
-        <div className="min-h-[60vh] pt-10 max-w-[50vw] mx-auto flex flex-col">
+        <div className="w-[80%] min-h-[70vh] sm:min-h-[60vh] pt-20 sm:pt-10 sm:max-w-[35vw] mx-auto flex flex-col">
             <div className="flex flex-col ">
 
                 <h1 className="text-5xl font-bold mb-7 mx-auto">Sign Up</h1>
@@ -78,12 +78,14 @@ export default function Signup() {
                         <span>{error}</span>
                     </div>}
 
-                    <button disabled={loading} className="btn btn-wide mx-auto">
+                    <button disabled={loading} className="btn btn-outline ">
                         {loading ? "Loading..." : "Sign Up"}
                     </button>
 
-                    <GoogleOAuth />
-                    <GitHubOAuth />
+                    <div className="flex mx-auto justify-between gap-6 w-full">
+                        <GoogleOAuth />
+                        <GitHubOAuth />
+                    </div>
 
                 </form>
 

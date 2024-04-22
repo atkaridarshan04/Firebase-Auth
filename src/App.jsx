@@ -3,6 +3,7 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 export default function App() {
 
@@ -16,6 +17,8 @@ export default function App() {
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/sign-in" element={<Signin />} />
       </Routes>
+
+      <Footer />
 
     </BrowserRouter>
   )
